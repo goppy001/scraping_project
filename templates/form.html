@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="inputform">
+    <div class="title">
+	<h2>エン・ジャパン掲載の平均給料を計算するツールです</h2>
+    </div>
+    <div class="rule">
+        <ul>
+            <li>希望職種は1つだけ選択してください</li>
+	    <li>希望勤務地は複数選択できます</li>
+	    <li>希望業種は複数選択できますが表示は最初の1つだけとなります</li>
+            <li>特長より下の項目は選択しないでください</li>
+	</ul>
+    </div>
+    <div class="space">
+	<div class="url">
+            <p>表示結果のURLを入力してください</p>
+            <div class="form">
+                <form action="/result" method="POST">
+	            <div class="inputarea">
+                        <input name="url"></input>
+                    </div>
+		    <div class="button">
+		        <input type="submit" value="送信">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

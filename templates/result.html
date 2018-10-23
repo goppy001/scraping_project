@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="inputform">
+    <div class="title">
+	<h2>エン・ジャパン掲載の平均給料を計算するツールです</h2>
+    </div>
+    <div class="rule">
+        <ul>
+            <li>希望職種は1つだけ選択してください</li>
+	    <li>希望勤務地は複数選択できます</li>
+	    <li>希望業種は複数選択できますが表示は最初の1つだけとなります</li>
+            <li>特長より下の項目は選択しないでください</li>
+	</ul>
+    </div>
+    <div class="space">
+	<div class="url">
+            <p>表示結果のURLを入力してください</p>
+            <div class="form">
+                <form action="{{url_for("result")}}" method="POST">
+	            <div class="inputarea">
+                        <input name="url"></input>
+                    </div>
+		    <div class="button">
+		        <input type="submit" value="送信">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="result">
+        <div class="areajob">
+            {% if job_name %}
+	        <p>希望職種:{{job_name}}</p>
+            {% endif %}
+        </div>
+        <div class="areaname">
+            {% if area_name %}
+                <p>希望勤務地:{{area_name}}</p>
+            {% endif %}
+        </div>
+        <div class="genre">
+            {% if genre %}
+                <p>希望勤務地:{{genre}}</p>
+            {% endif %}
+        </div>
+        <div class="salary_count">
+            {% if under_array_size %}
+                <p>下限月収のサンプル数:{{under_array_size}}個</p>
+            {% endif %}
+        </div>
+        <div class="salary_ave">
+            {% if under_ave %}
+                <p>下限月収平均:{{under_ave}}万円</p>
+            {% endif %}
+        </div>
+        <div class="salary_count">
+            {% if limit_array_size %}
+                <p>上限月収のサンプル数:{{limit_array_size}}個</p>
+            {% endif %}
+        </div>
+        <div class="salary_ave">
+            {% if limit_ave %}
+                <p>上限月収平均:{{limit_ave}}万円</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
